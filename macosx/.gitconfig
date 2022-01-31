@@ -1,0 +1,10 @@
+[user]
+	name = Martin Wojtczyk
+	email = martin.wojtczyk@gmail.com
+[color]
+	ui = auto
+[push]
+	default = tracking
+	#simple
+[credential]
+	helper = osxkeychain
