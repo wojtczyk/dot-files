@@ -1,6 +1,8 @@
 export CLICOLOR=1
 export LSCOLORS=Exfxcxdxbxegedabagacad
 
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+
 eval "$(/opt/homebrew/bin/brew shellenv)"
 export HOMEBREW_NO_ENV_HINTS=1
 
@@ -11,6 +13,8 @@ parse_git_branch() {
 setopt PROMPT_SUBST
 PROMPT='%10F%n@%m%f:%11F%9c%{%F{green}%}$(parse_git_branch)%{%F{none}%} $ '
 
+# MW enable zsh auto completion
+autoload -Uz compinit && compinit
 # MW zsh search within history
 bindkey -v
 bindkey '^R' history-incremental-search-backward
