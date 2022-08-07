@@ -61,7 +61,7 @@ function! HLNext (blinktime)
 endfunction
 
 "show tabs, non-breaking spaces, end of line white spaces
-exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~" 
+exec "set listchars=tab:\uB7\uB7,trail:\uB7,nbsp:~" 
 set list
 
 " custom path for vimwiki
