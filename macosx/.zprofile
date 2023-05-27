@@ -33,3 +33,32 @@ export PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=cpp
 
 # MW load secrets
 source $HOME/.secrets
+# MW rust stuff
+source "$HOME/.cargo/env"
+# MW xz defaults: use all cores during compression
+# doesn't seem to be honored by tar :/
+export XZ_DEFAULTS='-T0'
+export XZ_OPT='-T0'
+export TAR_WRITER_OPTIONS=threads=8
+
+# MW custom conda init on demand
+init_conda_m1() {
+  # >>> conda initialize >>>
+  # !! Contents within this block are managed by 'conda init' !!
+  conda_path="/usr/local/stow/miniconda3-m1"
+  __conda_setup="$('${conda_path}/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+  if [ $? -eq 0 ]; then
+      eval "$__conda_setup"
+  else
+      if [ -f "${conda_path}/etc/profile.d/conda.sh" ]; then
+          . "${conda_path}/etc/profile.d/conda.sh"
+      else
+          export PATH="${conda_path}/bin:$PATH"
+      fi
+  fi
+  unset __conda_setup
+  # <<< conda initialize <<<
+}
+
+# MW pycharm path
+export PATH=$PATH:"/Users/martin/Applications/PyCharm CE.app/Contents/MacOS"
