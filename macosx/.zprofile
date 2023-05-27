@@ -11,9 +11,10 @@ parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ [\1]/'
 }
 setopt PROMPT_SUBST
-PROMPT='%10F%n@%m%f:%11F%9c%{%F{green}%}$(parse_git_branch)%{%F{none}%} $ '
+#PROMPT='%10F%n@%m%f:%11F%9c%{%F{green}%}$(parse_git_branch)%{%F{none}%} $ '
+PROMPT='%10F%n@%m%f:%12F%9c%{%F{green}%}$(parse_git_branch)%{%F{none}%} $ '
 
-# MW enable zsh auto completion
+# MW zsh autocomplete
 autoload -Uz compinit && compinit
 # MW zsh search within history
 bindkey -v
@@ -24,6 +25,8 @@ alias gitlog="git log --oneline --graph --decorate --all"
 alias gitclean="git clean -f -d"
 # MW disable octave gui
 alias octave=octave-cli 
+# MW grep with colors and line numbers
+alias grep='grep --color=auto -n'
 
 # MW editor
 export EDITOR=vim
@@ -62,3 +65,7 @@ init_conda_m1() {
 
 # MW pycharm path
 export PATH=$PATH:"/Users/martin/Applications/PyCharm CE.app/Contents/MacOS"
+# MW get addr2line from binutils in path
+export PATH=$PATH:/opt/homebrew/opt/binutils/bin
+# MW for minicom
+LANG="en_US.UTF-8"
