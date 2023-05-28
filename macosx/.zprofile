@@ -2,7 +2,6 @@ export CLICOLOR=1
 export LSCOLORS=Exfxcxdxbxegedabagacad
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
-
 eval "$(/opt/homebrew/bin/brew shellenv)"
 export HOMEBREW_NO_ENV_HINTS=1
 
@@ -11,8 +10,8 @@ parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ [\1]/'
 }
 setopt PROMPT_SUBST
-#PROMPT='%10F%n@%m%f:%11F%9c%{%F{green}%}$(parse_git_branch)%{%F{none}%} $ '
-PROMPT='%10F%n@%m%f:%12F%9c%{%F{green}%}$(parse_git_branch)%{%F{none}%} $ '
+# MW zsh prompt - %F{} fg color, %f reset color, %n username, %m hostname, %9~ current dir
+PROMPT='%F{green}%n@%m%f:%F{magenta}%9~%F{green}$(parse_git_branch)%f $ '
 
 # MW zsh autocomplete
 autoload -Uz compinit && compinit
